@@ -28,7 +28,7 @@
       return data;
     };
     q = "select * from html where url='http://ojp.nationalrail.co.uk/service/ldbboard/dep/BKM/CLJ/To' and xpath='//div[@class=\"tbl-cont\"]/table/tbody/tr'";
-    return jyql(q, void 0, function(err, data) {
+    return jyql(q, function(err, data) {
       var train, _i, _len, _ref;
       _ref = interpretNationalRailData(data);
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {

@@ -37,14 +37,14 @@ console the JSON output of a query:
       // Get the estimated arrival times of live trains from Clapham
       // Junction to Berkhamsted
       var q = "select * from html where url='http://ojp.nationalrail.co.uk/service/ldbboard/dep/BKM/CLJ/To' and xpath='//div[@class=\"tbl-cont\"]/table/tbody/tr'";
-      jyql(q, undefined, function (err, data) { console.log(data); });
+      jyql(q, function (err, data) { console.log(data); });
     </script>
 
 
 #Licensing
 
 ##Yahoo! Query Language Terms Of Use
-By using my code you are also accepting both Yahoo! terms of service at 
+By using jyql you are also accepting both Yahoo! terms of service at 
 [http://info.yahoo.com/legal/us/yahoo/utos/utos-173.html](http://info.yahoo.com/legal/us/yahoo/utos/utos-173.html)
 and Yahoo! Query Language's terms of use at [http://info.yahoo.com/legal/us/yahoo/yql/yql-4307.html](http://info.yahoo.com/legal/us/yahoo/yql/yql-4307.html).
 

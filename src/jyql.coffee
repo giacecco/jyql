@@ -1,5 +1,6 @@
-# Dynamically downloads and add one script to the host web page
-# Thanks to http://www.hunlock.com/blogs/Howto_Dynamically_Insert_Javascript_And_CSS and http://unixpapa.com/js/dyna.html
+# Dynamically injects JavaScript or downloads a JavaScript file into the host 
+# web page. Thanks to http://www.hunlock.com/blogs/Howto_Dynamically_Insert_Javascript_And_CSS 
+# and http://unixpapa.com/js/dyna.html
 addScript = (script, callback) ->
   headID = document.getElementsByTagName("head")[0]
   newScript = document.createElement('script')
@@ -17,14 +18,15 @@ addScript = (script, callback) ->
   null
 
 
-jyql = (query, namespace = 'jyql', callback) ->
-  # I create a temporary global function to be called back by YQL and a temporary global variable to store its data
-  namespace += '_' if namespace isnt ''
-  randomName = namespace + Math.random().toString(36).substr(2, 7)
+jyql = (query, callback) ->
+  # TODO: force the 'namespace' for temporary functions and variables to use the same name the jyql is available with 
+  # I create a temporary global function to be called back by YQL and a 
+  # temporary global variable to store its data
+  randomName = 'jyql_' + Math.random().toString(36).substr(2, 7)
   callbackFunctionSource = "var " + randomName + "_data = { };\nvar " + randomName + "_function = function (data) { " + randomName + "_data = data; };"
-  # I add the above to the host web page's head element
+  # I add the temporary variable and function to the host web page's head 
   addScript callbackFunctionSource, =>
-    # TODO: https should be chosen if the host page has been served in ssl, otherwise the browser could complain
+    # TODO: https should be chosen if the host page has been served in ssl, otherwise the browser could refuse access for security reasons
     addScript "http://query.yahooapis.com/v1/public/yql?format=json&callback=" + escape(randomName + '_function') + "&q=" + escape(query), (err) =>
       callback err, eval(randomName + '_data')
   null
