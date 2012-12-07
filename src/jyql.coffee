@@ -7,7 +7,7 @@ addScript = (script, callback) ->
   if (script.match /^http[\s\S]*/)? # TODO: this could be better
     newScript.src = script
     # TODO: is there a way for the browser to fail gracefully if I can't load the script?
-    newScript.onload = ->
+    newScript.onload = =>
       callback null # In reality I can't know if I was successful...
     headID.appendChild newScript
   else
@@ -20,14 +20,13 @@ addScript = (script, callback) ->
 jyql = (query, namespace = 'jyql', callback) ->
   # I create a temporary global function to be called back by YQL and a temporary global variable to store its data
   namespace += '_' if namespace isnt ''
-  randomDataName = namespace + Math.random().toString(36).substr(2, 7)
-  randomCallbackName = namespace + Math.random().toString(36).substr(2, 7)
-  callbackFunctionSource = "var " + randomDataName + " = { };\nvar " + randomCallbackName + " = function (data) { " + randomDataName + " = data; };"
+  randomName = namespace + Math.random().toString(36).substr(2, 7)
+  callbackFunctionSource = "var " + randomName + "_data = { };\nvar " + randomName + "_function = function (data) { " + randomName + "_data = data; };"
   # I add the above to the host web page's head element
   addScript callbackFunctionSource, =>
     # TODO: https should be chosen if the host page has been served in ssl, otherwise the browser could complain
-    addScript "http://query.yahooapis.com/v1/public/yql?format=json&callback=" + escape(randomCallbackName) + "&q=" + escape(query), (err) =>
-      callback err, eval(randomDataName)
+    addScript "http://query.yahooapis.com/v1/public/yql?format=json&callback=" + escape(randomName + '_function') + "&q=" + escape(query), (err) =>
+      callback err, eval(randomName + '_data')
   null
 
 # found this trick at http://stackoverflow.com/questions/4214731/coffeescript-global-variables
