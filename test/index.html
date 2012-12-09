@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <title>QUnit Test Suite</title>
+  <script type="text/javascript" src="http://code.jquery.com/qunit/qunit-1.10.0.js"></script>
+  <script type="text/javascript" src="../lib/jyql.js"></script>
   <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.10.0.css" type="text/css" media="screen">
 </head>
 <body>
+
   <!--
-		Thanks to http://effectif.com/coffeescript/qunit-boilerplate for
-		this template
+    Thanks to http://effectif.com/coffeescript/qunit-boilerplate for
+    this template
    -->
+
   <h1 id="qunit-header">QUnit Tests</h1>
   <h2 id="qunit-banner"></h2>
   <div id="qunit-testrunner-toolbar"></div>
@@ -17,7 +21,12 @@
   <ol id="qunit-tests"></ol>
   <div id="qunit-fixture">
   </div>
-  <script type="text/javascript" src="http://code.jquery.com/qunit/qunit-1.10.0.js"></script>
-  <script type="text/javascript" src="jyql.test.js"></script>
+
+  <script type="text/javascript">
+    QUnit.config.requireExpects = true;
+  </script>
+  <script type="text/javascript" src="jyql.test.basics.js"></script>
+  <script type="text/javascript" src="jyql.test.realQueries.js"></script>
+
 </body>
 </html>

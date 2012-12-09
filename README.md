@@ -40,6 +40,10 @@ console the JSON output of a query:
       jyql(q, function (err, data) { console.log(data); });
     </script>
 
+#Requirements
+None! The source though is written in [CoffeeScript](http://coffeescript.org/), 
+hence if you amend the source you will have to recompile it using a 
+[CoffeeScript compiler](https://github.com/jashkenas/coffee-script).
 
 #Licensing
 

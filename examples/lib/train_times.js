@@ -5,19 +5,19 @@
     var interpretNationalRailData, q,
       _this = this;
     interpretNationalRailData = function(nationalRailData) {
-      var data, rawData, row, _fn, _i, _len, _ref,
+      var data, rawData, row, _fn, _i, _len, _ref, _ref1,
         _this = this;
       data = [];
       rawData = nationalRailData;
-      rawData = (rawData != null ? (_ref = rawData.query) != null ? _ref.results.tr : void 0 : void 0) || [];
+      rawData = (rawData != null ? (_ref = rawData.query) != null ? (_ref1 = _ref.results) != null ? _ref1.tr : void 0 : void 0 : void 0) || [];
       _fn = function(row) {
-        var tempData, _ref1, _ref2, _ref3, _ref4, _ref5;
+        var tempData, _ref2, _ref3, _ref4, _ref5, _ref6;
         tempData = {
-          arrivalTime: (_ref1 = row.td[0]) != null ? _ref1.p : void 0,
-          source: (_ref2 = row.td[1]) != null ? _ref2.p : void 0,
-          status: (_ref3 = row.td[2]) != null ? _ref3.p : void 0,
-          platform: (_ref4 = row.td[3]) != null ? _ref4.p : void 0,
-          detailsURL: row.td[4] != null ? "http://ojp.nationalrail.co.uk" + ((_ref5 = row.td[4]) != null ? _ref5.a.href : void 0) : void 0
+          arrivalTime: (_ref2 = row.td[0]) != null ? _ref2.p : void 0,
+          source: (_ref3 = row.td[1]) != null ? _ref3.p : void 0,
+          status: (_ref4 = row.td[2]) != null ? _ref4.p : void 0,
+          platform: (_ref5 = row.td[3]) != null ? _ref5.p : void 0,
+          detailsURL: row.td[4] != null ? "http://ojp.nationalrail.co.uk" + ((_ref6 = row.td[4]) != null ? _ref6.a.href : void 0) : void 0
         };
         return data.push(tempData);
       };

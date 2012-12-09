@@ -20,6 +20,10 @@ addScript = (script, callback) ->
 
 jyql = (query, callback) ->
   # TODO: force the 'namespace' for temporary functions and variables to use the same name the jyql is available with 
+  if not callback? or typeof callback isnt 'function'
+    return null
+  if not query? or query is ''
+    return callback new Error('No query was specified'), null
   # I create a temporary global function to be called back by YQL and a 
   # temporary global variable to store its data
   randomName = 'jyql_' + Math.random().toString(36).substr(2, 7)
@@ -28,6 +32,9 @@ jyql = (query, callback) ->
   addScript callbackFunctionSource, =>
     # TODO: https should be chosen if the host page has been served in ssl, otherwise the browser could refuse access for security reasons
     addScript "http://query.yahooapis.com/v1/public/yql?format=json&callback=" + escape(randomName + '_function') + "&q=" + escape(query), (err) =>
+      # I check for any errors returned by YQL 
+      if not err and eval(randomName + '_data').error?
+        err = new Error(eval(randomName + '_data').error.description)
       callback err, eval(randomName + '_data')
   null
 

@@ -3,7 +3,7 @@ $ ->
   interpretNationalRailData = (nationalRailData) ->
     data = [ ]
     rawData = nationalRailData
-    rawData = rawData?.query?.results.tr or [ ]  
+    rawData = rawData?.query?.results?.tr or [ ]  
     for row in rawData
       do (row) =>
         tempData = 
@@ -19,4 +19,4 @@ $ ->
   q = "select * from html where url='http://ojp.nationalrail.co.uk/service/ldbboard/dep/BKM/CLJ/To' and xpath='//div[@class=\"tbl-cont\"]/table/tbody/tr'"
   jyql q, (err, data) =>
     $('#listOfTrains').append '<tr><td>' + train.arrivalTime + '</td><td>' + train.source + '</td><td>' + train.status + '</td></tr>' for train in interpretNationalRailData(data)
-    $('#loadingMessage').html ''    
+    $('#loadingMessage').html ''
