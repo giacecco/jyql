@@ -11,6 +11,8 @@ task 'build:test', 'Rebuild the jyql tests', ->
     console.log stderr + '\n' + stdout if stderr or stdout
 
 task 'build:examples', 'Rebuild the jyql examples', ->
-  exec COFFEE_EXEC + ' -c -o examples/lib/ examples/src/', (err, stdout, stderr) ->
-    console.log stderr + '\n' + stdout if stderr or stdout
+  for x in [ 'browser', 'nodejs' ]
+    do (x) =>
+      exec COFFEE_EXEC + ' -c -o examples/' + x + '/ examples/' + x + '/src/', (err, stdout, stderr) ->
+        console.log "# Example: " + x + "\n" + stderr + '\n' + stdout if stderr or stdout
     

@@ -27,7 +27,7 @@
       }
       return data;
     };
-    q = "select * from html where url='http://ojp.nationalrail.co.uk/service/ldbboard/dep/BKM/CLJ/To' and xpath='//div[@class=\"tbl-cont\"]/table/tbody/tr'";
+    q = "select * from html where url='http://ojp.nationalrail.co.uk/service/ldbboard/dep/EUS/BKM/To' and xpath='//div[@class=\"tbl-cont\"]/table/tbody/tr'";
     return jyql(q, function(err, data) {
       var train, _i, _len, _ref;
       _ref = interpretNationalRailData(data);
@@ -35,7 +35,7 @@
         train = _ref[_i];
         $('#listOfTrains').append('<tr><td>' + train.arrivalTime + '</td><td>' + train.source + '</td><td>' + train.status + '</td></tr>');
       }
-      return $('#loadingMessage').html('');
+      return $('#loadingMessage').html('err was: ' + err);
     });
   });
 

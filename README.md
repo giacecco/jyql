@@ -7,13 +7,13 @@ any Internet source using the Yahoo! Query Language engine (YQL) as a proxy.
 The real value added of jyql comes from using it within the browser, as using
 jyql allows you to override the cross-scripting limitations that most 
 mainstream web browsers implements for security reasons, without making your 
-web page less secure. 
+web page less secure though. 
 
-It is just for consistency across browser and server code that jyql can be used 
-also on the server as a Node.js module. Node though has plenty of ways to 
-achieve the same results without the need of using YQL.
+It is just for consistency across browser and server code that jyql is designed
+to be used also on the server as a Node.js module. Node.js, though, has plenty 
+of alternative ways to achieve the same results without the need of using YQL.
 
-Jyql would not exist without their service, so be grateful to them and
+Jyql would not exist without Yahoo!, so be grateful to them and
 carefully read their terms of service and use referenced further down in this 
 document.
 
@@ -52,9 +52,19 @@ console the JSON output of a query:
     </script>
 
 #Requirements
-None! The source though is written in [CoffeeScript](http://coffeescript.org/), 
-hence if you amend the source you will have to recompile it using a 
-[CoffeeScript compiler](https://github.com/jashkenas/coffee-script).
+
+## In the browser
+None! 
+
+## In Node.js
+The beautifully simple [mikeal / request](https://github.com/mikeal/request).
+
+## For developers
+The source of jyql and all of its examples and test scripts are written in 
+[CoffeeScript](http://coffeescript.org/).
+
+Jyql test scripts rely on the [QUnit](http://qunitjs.com/) framework and, for 
+the time being, cover the web browser version only. 
 
 #Licensing
 

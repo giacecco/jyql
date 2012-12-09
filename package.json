@@ -1,24 +1,25 @@
 { 
-	"name": "jyql", 
-	"description": "Jyql is a browser-based and Node.js JavaScript library for fetching data from any Internet source using the Yahoo! Query Language engine (YQL) as a proxy. ", 
-	"tags": [ "YQL", "Yahoo!", "Yahoo! Query Language" ], 
-	"version": "0.0.1", 
-	"author": "Gianfranco Cecconi <giacecco@giacec.co> (http://www.giaceccosdigitalcontraptionsimaginarium.com)",
-	"homepage": "https://github.com/giacecco/jyql",
-	"repository": { 
-		"type": "git", 
-		"url": "git://github.com/giacecco/jyql.git"
-	}, 
-  "bugs":	{ 
-  	"url": "https://github.com/giacecco/jyql/issues" 
+  "name": "jyql", 
+  "description": "Jyql is a browser-based and Node.js JavaScript library for fetching data from any Internet source using the Yahoo! Query Language engine (YQL) as a proxy. ", 
+  "tags": [ "YQL", "Yahoo!", "Yahoo! Query Language" ], 
+  "version": "0.0.1", 
+  "author": "Gianfranco Cecconi <giacecco@giacec.co> (http://www.giaceccosdigitalcontraptionsimaginarium.com)",
+  "homepage": "https://github.com/giacecco/jyql",
+  "repository": { 
+    "type": "git", 
+    "url": "git://github.com/giacecco/jyql.git"
+  }, 
+  "bugs": { 
+    "url": "https://github.com/giacecco/jyql/issues" 
   }, 
   "engines": ["node >= 0.8.15"], 
   "main": "./lib/jyql", 
   "dependencies": { 
+    "request": ">=2.12.0"
   }, 
-	"devDependencies": {
-		"coffee-script": ">=1.4.0"
-	},
+  "devDependencies": {
+    "coffee-script": ">=1.4.0"
+  },
   "scripts": { 
     "build:library": "./node_modules/coffee-script/bin/cake build:library",
     "build:test": "./node_modules/coffee-script/bin/cake build:test",
