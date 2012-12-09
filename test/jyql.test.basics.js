@@ -3,7 +3,7 @@ var _this = this;
 
 module('jyql.test.basics');
 
-asyncTest("If I don't specify a callback, or it is not a function, jyql does nothing and returns null", 2, function() {
+asyncTest("If a callback is not specified, or it is not a function, jyql does nothing and returns null", 2, function() {
   var q;
   q = "select * from csv where url='http://download.finance.yahoo.com/d/quotes.csv?s=YHOO,GOOG,AAPL&f=sl1d1t1c1ohgv&e=.csv' and columns='symbol,price,date,time,change,col1,high,low,col2'";
   ok(jyql(q, void 0) === null);

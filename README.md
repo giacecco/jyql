@@ -1,10 +1,21 @@
 jyql
 ====
 
-Jyql is a browser-oriented JavaScript library for fetching data from any 
-Internet source through the Yahoo! Query Language engine. Jyql would not exist 
-without their service, so be grateful to them and carefully read their terms
-of service and use referenced further down in this document.
+Jyql is a browser-based and Node.js JavaScript library for fetching data from 
+any Internet source using the Yahoo! Query Language engine (YQL) as a proxy. 
+
+The real value added of jyql comes from using it within the browser, as using
+jyql allows you to override the cross-scripting limitations that most 
+mainstream web browsers implements for security reasons, without making your 
+web page less secure. 
+
+It is just for consistency across browser and server code that jyql can be used 
+also on the server as a Node.js module. Node though has plenty of ways to 
+achieve the same results without the need of using YQL.
+
+Jyql would not exist without their service, so be grateful to them and
+carefully read their terms of service and use referenced further down in this 
+document.
 
 ![Powered by Yahoo!](http://l.yimg.com/a/i/ydn/poweredby-144x20.png)
 

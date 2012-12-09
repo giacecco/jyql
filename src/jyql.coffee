@@ -30,8 +30,10 @@ jyql = (query, callback) ->
   callbackFunctionSource = "var " + randomName + "_data = { };\nvar " + randomName + "_function = function (data) { " + randomName + "_data = data; };"
   # I add the temporary variable and function to the host web page's head 
   addScript callbackFunctionSource, =>
-    # TODO: https should be chosen if the host page has been served in ssl, otherwise the browser could refuse access for security reasons
-    addScript "http://query.yahooapis.com/v1/public/yql?format=json&callback=" + escape(randomName + '_function') + "&q=" + escape(query), (err) =>
+    # Note the line below: YQL should be called in SSL if the host page is in 
+    # SSL, otherwise browsers such as Chrome may complain
+    protocol = "http" or window?.parent?.document?.location?.protocol
+    addScript protocol + "://query.yahooapis.com/v1/public/yql?format=json&callback=" + escape(randomName + '_function') + "&q=" + escape(query), (err) =>
       # I check for any errors returned by YQL 
       if not err and eval(randomName + '_data').error?
         err = new Error(eval(randomName + '_data').error.description)
