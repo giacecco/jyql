@@ -1,4 +1,4 @@
-/*! jyql - v0.0.1 - 2012-12-09
+/*! jyql - v0.0.1 - 2012-12-11
 * https://github.com/giacecco/jyql
 * Copyright (c) 2012 Gianfranco Cecconi
 * Licensed MIT, Yahoo! terms of service, Yahoo! Query Language's terms of use */

@@ -27,27 +27,29 @@ computational power was less of an issue and the security of what content was
 fetched could be better controlled.
 
 Security is also the reason why the JavaScript implementation of most web
-browsers won't allow you to fetch scripts or data from domain names different
-than the one the current web page is served from ([HERE GOES A LINK TO SOME
-NICE WEB SITE THAT EXPLAINS THE PROBLEM IN MORE DETAIL]). This is a strong 
-limitation for developers who are short on resources and cannot afford a 
-'server component' to their applications.
+browsers won't allow client-side code to fetch data from websites that are 
+different from the one the current web page is served from (e.g. read about 
+cross-site request forgery 
+[here](http://en.wikipedia.org/wiki/Cross-site_request_forgery)). This is a 
+strong although due limitation for developers, that penalises in particular
+the ones who are short on resources and cannot afford pushing to the server the
+same functionality.
 
-The Yahoo! Query Language engine solves a great part of this problem, as it can
-take the task of transform the data one wants to import into a JSONP script you
-can import into your web page ([HERE GOES A LINK TO SOME NICE WEB SITE 
-EXPLAINING JSONP]).
+The Yahoo! Query Language engine solves a great part of this problem. It takes
+the task of transforming the data one wants into a JSONP script she can then
+import into her web page. Script imports are the only data retrieval operations
+that are allowed cross-site, hence overriding the limitation described above. 
+Read more about JSONP (here)[http://en.wikipedia.org/wiki/JSONP].
 
 Jyql is a wrapper around Yahoo! Query Language, allowing you rely on the power 
 of their services in a few lines of client-side JavaScript code. It can be as 
 simple as in the example below, that displays on the web browser's JavaScript
 console the JSON output of a query:
 
-    <script src="jyql.js"></script>
+    <script src="dist/jyql-min.js"></script>
     <script>
-      // Get the estimated arrival times of live trains from Clapham
-      // Junction to Berkhamsted
-      var q = "select * from html where url='http://ojp.nationalrail.co.uk/service/ldbboard/dep/BKM/CLJ/To' and xpath='//div[@class=\"tbl-cont\"]/table/tbody/tr'";
+      // Get the estimated arrival times of live trains from Berkhamsted to Euston
+      var q = "select * from html where url='http://ojp.nationalrail.co.uk/service/ldbboard/dep/EUS/BKM/To' and xpath='//div[@class=\"tbl-cont\"]/table/tbody/tr'";
       jyql(q, function (err, data) { console.log(data); });
     </script>
 
@@ -61,10 +63,13 @@ The beautifully simple [mikeal / request](https://github.com/mikeal/request).
 
 ## For developers
 The source of jyql and all of its examples and test scripts are written in 
-[CoffeeScript](http://coffeescript.org/).
+[CoffeeScript](http://coffeescript.org/) that is always compiled before being
+used in tests or examples.
 
 Jyql test scripts rely on the [QUnit](http://qunitjs.com/) framework and, for 
-the time being, cover the web browser version only. 
+the time being, cover the web browser-based functionality of the library only. 
+
+[Grunt](http://gruntjs.com) is used for packaging for distribution.
 
 #Licensing
 
