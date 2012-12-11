@@ -15,7 +15,7 @@ $ ->
         data.push tempData
     return data
 
-  q = "select * from html where url='http://ojp.nationalrail.co.uk/service/ldbboard/dep/EUS/BKM/To' and xpath='//div[@class=\"tbl-cont\"]/table/tbody/tr'"
+  q = "select * from html where url='http://ojp.nationalrail.co.uk/service/ldbboard/arr/EUS/BKM/From' and xpath='//div[@class=\"tbl-cont\"]/table/tbody/tr'"
   jyql q, (err, data) =>
     $('#listOfTrains').append '<tr><td>' + train.arrivalTime + '</td><td>' + train.source + '</td><td>' + train.status + '</td></tr>' for train in interpretNationalRailData(data)
     $('#loadingMessage').html 'err was: ' + err
