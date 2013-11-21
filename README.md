@@ -1,6 +1,8 @@
 jyql
 ====
 
+![nodei.co npm status](https://nodei.co/npm/jyql.png)
+
 Jyql is a browser-based and Node.js JavaScript library for fetching text-based 
 data (html, JSON, XML, RSS feeds...) from any Internet source using the Yahoo! 
 Query Language engine (http://developer.yahoo.com/yql/ also known as YQL) as a 
